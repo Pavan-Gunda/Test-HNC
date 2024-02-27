@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: argocd-hello-hnc-ns
+  namespace: argocd-system
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: staging #adjust the values as needed
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: deploy/namespace
+    repoURL: https://github.com/Pavan-Gunda/Test-HNC
+    targetRevision: HEAD
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+      allowEmpty: true

@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: ping-server
+  name: server
+  namespace: demo-app-hnc
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ping-server
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: ping-server
+    spec:
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                  - key: app
+                    operator: In
+                    values:
+                      - pong-client
+              topologyKey: "kubernetes.io/hostname"
+      containers:
+        - image: freddeliv/ping-server:v1.0.3
+          name: ping-server
+          resources:
+            limits:
+              cpu: 200m
+              memory: 250Mi
+            requests:
+              cpu: 100m
+              memory: 150Mi
+          securityContext:
+            runAsUser: 1000
+status: {}
