@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: God's-son
+  namespace: argocd-system
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: argocd-system
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: deploy
+    repoURL: https://github.com/Pavan-Gunda/Test-HNC.git
+    targetRevision: HEAD
+  syncPolicy:
+    automated: {}
