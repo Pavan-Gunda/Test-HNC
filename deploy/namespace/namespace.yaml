@@ -1,0 +1,29 @@
+apiVersion: hnc.x-k8s.io/v1alpha2
+kind: SubnamespaceAnchor
+metadata:
+  creationTimestamp: "2023-11-28T08:32:21Z"
+  finalizers:
+  - hnc.x-k8s.io
+  generation: 3
+  name: demo-app-hnc
+  namespace: staging
+---
+apiVersion: hnc.x-k8s.io/v1alpha2
+kind: SubnamespaceAnchor
+metadata:
+  creationTimestamp: "2023-11-28T08:32:21Z"
+  finalizers:
+  - hnc.x-k8s.io
+  generation: 3
+  name: demo-pavan-hnc
+  namespace: staging
+---
+apiVersion: hnc.x-k8s.io/v1alpha2
+kind: SubnamespaceAnchor
+metadata:
+  creationTimestamp: "2023-11-28T08:32:21Z"
+  finalizers:
+  - hnc.x-k8s.io
+  generation: 3
+  name: demo-pavan-hnc2
+  namespace: staging
